@@ -20,12 +20,12 @@ class About extends React.Component {
   handleClick(){
     let name = this.state.inputValue;
     searchGit(name)
-     .then( (recData) => {
+      .then( (recData) => {
         this.setState({
           data:recData.getDate,
           wait:false
         })
-        console.log(this.state.data);
+        // console.log(this.state.data);
       });
   }
   render () {

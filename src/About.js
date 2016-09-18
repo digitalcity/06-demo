@@ -12,18 +12,25 @@ class About extends React.Component {
   }
   componentDidMount(){
     searchGit()
-     .then( (data) => {
-        console.log(data);
+     .then( (recData) => {
         this.setState({
-          data:data.data,
+          data:recData.getDate,
           wait:false
         })
         console.log(this.state.data);
       });
   }
   render () {
+    let styles={
+      root:{
+        maxWidth:'700px',
+        margin:'0 auto',
+        border:'1px solid teal',
+        textAlign:'center'
+      }
+    }
     let gitInfo = (
-      <div>
+      <div style={styles.root}>
         <h3>{this.state.data.name}</h3>
         <img src={this.state.data.avatar_url} />
       </div>

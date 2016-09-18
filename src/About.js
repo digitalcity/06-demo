@@ -7,18 +7,23 @@ class About extends React.Component {
     super();
     this.state={
       data:{},
-      wait:true
+      wait:true,
+      inputValue:'username'
     }
   }
   componentDidMount(){
-    searchGit()
-     .then( (recData) => {
-        this.setState({
-          data:recData.getDate,
-          wait:false
-        })
-        console.log(this.state.data);
-      });
+    // searchGit()
+    //  .then( (recData) => {
+    //     this.setState({
+    //       data:recData.getDate,
+    //       wait:false
+    //     })
+    //     console.log(this.state.data);
+    //   });
+  }
+  handleInput(e){
+    let value = e.target.value;
+    this.setState({inputValue:value})
   }
   render () {
     let styles={
@@ -37,6 +42,7 @@ class About extends React.Component {
     )
     return(
       <div>
+        <input type="text" value={this.state.inputValue} onChange={this.handleInput.bind(this)}/><button>搜索</button><br />
         { this.state.wait ? '请稍等' : gitInfo }
       </div>
     )

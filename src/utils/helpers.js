@@ -11,7 +11,6 @@ function searchGit (add) {
     });
 }
 
-export { searchGit };
 
 function getJson() {
   let address = `https://raw.githubusercontent.com/newming/demodata/master/card.json?${Math.random()}`;
@@ -24,4 +23,15 @@ function getJson() {
     });
 }
 
-export { getJson };
+function getMd(add) {
+  let address = `https://raw.githubusercontent.com/newming/demodata/master/blog/${add}.md`;
+  return axios.get(address)
+    .then( (res) => (
+      { getMd:res.data }
+    ))
+    .catch(function (error) {
+      alert(error);
+    });
+}
+
+export { searchGit,getJson,getMd };
